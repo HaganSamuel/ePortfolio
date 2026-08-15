@@ -3,103 +3,157 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hagan Samuel CS 499 Computer Science ePortfolio" />
   <title>Hagan Samuel | CS 499 ePortfolio</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
-      background: #f7f7f7;
-      color: #222;
+    :root {
+      --ink:#162033; --muted:#5d687a; --surface:#ffffff; --page:#f3f6fa;
+      --accent:#155f9e; --accent2:#0b3d66; --line:#dbe3ec; --soft:#eaf2f9;
+      --success:#17653d; --shadow:0 10px 28px rgba(25,44,70,.08);
     }
-
-    header {
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-
-    nav {
-      margin-top: 25px;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-
-    nav a {
-      display: block;
-      margin: 10px 0;
-      color: #0056b3;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    section {
-      margin-top: 25px;
-      background: #ffffff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:Arial,Helvetica,sans-serif; background:var(--page); color:var(--ink); line-height:1.65; }
+    a { color:var(--accent); }
+    a:focus-visible, button:focus-visible { outline:3px solid #f0a202; outline-offset:3px; }
+    .skip { position:absolute; left:-9999px; top:8px; background:#fff; padding:10px 14px; z-index:20; }
+    .skip:focus { left:8px; }
+    header { background:linear-gradient(135deg,#0b3d66,#155f9e); color:#fff; padding:64px 24px 48px; }
+    .wrap { width:min(1080px, calc(100% - 36px)); margin:0 auto; }
+    header h1 { margin:0; font-size:clamp(2.2rem,5vw,4rem); letter-spacing:-.03em; }
+    header h2 { margin:8px 0 18px; font-weight:500; }
+    header p { max-width:760px; font-size:1.08rem; margin-bottom:0; }
+    nav { position:sticky; top:0; z-index:10; background:rgba(255,255,255,.96); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+    nav .wrap { display:flex; gap:8px; overflow-x:auto; padding:10px 0; }
+    nav a { flex:0 0 auto; padding:8px 11px; border-radius:8px; text-decoration:none; font-weight:700; font-size:.92rem; }
+    nav a:hover { background:var(--soft); }
+    main { padding:28px 0 70px; }
+    section { scroll-margin-top:76px; background:var(--surface); margin:20px 0; padding:clamp(22px,4vw,38px); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); }
+    section h2 { margin-top:0; font-size:clamp(1.55rem,3vw,2.15rem); color:var(--accent2); }
+    h3 { color:var(--accent2); margin-bottom:8px; }
+    .lede { font-size:1.08rem; color:#344156; }
+    .hero-grid, .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .card { border:1px solid var(--line); border-radius:12px; padding:18px; background:#fbfcfe; }
+    .card h3 { margin-top:0; }
+    .tagrow { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 4px; }
+    .tag { background:var(--soft); color:var(--accent2); padding:5px 9px; border-radius:999px; font-size:.86rem; font-weight:700; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+    .btn { display:inline-block; padding:10px 14px; border-radius:9px; text-decoration:none; font-weight:700; border:1px solid var(--accent); }
+    .btn.primary { background:var(--accent); color:#fff; }
+    .btn.secondary { background:#fff; color:var(--accent); }
+    .note { padding:14px 16px; border-left:4px solid var(--accent); background:var(--soft); border-radius:8px; }
+    .verified { color:var(--success); font-weight:700; }
+    .video { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; background:#000; margin:18px 0; }
+    .video iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .assessment p { margin:0 0 1em; }
+    .outcomes { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; }
+    .outcome { background:#fbfcfe; border:1px solid var(--line); border-radius:10px; padding:14px; }
+    .outcome strong { display:block; color:var(--accent2); margin-bottom:5px; }
+    footer { color:var(--muted); text-align:center; padding:28px 18px 50px; }
+    code { background:#edf1f5; padding:2px 5px; border-radius:5px; }
+    @media (max-width:780px) { .hero-grid,.grid { grid-template-columns:1fr; } .outcomes { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
-  <header>
+<a class="skip" href="#main">Skip to main content</a>
+<header>
+  <div class="wrap">
     <h1>Hagan Samuel</h1>
     <h2>Computer Science ePortfolio</h2>
-    <p>
-      Welcome to my CS 499 ePortfolio. This website is going to highlight my
-      progress in software engineering, algorithms and data structures, databases, and
-      secure software development using improved artifacts from my Computer Science
-      curriculum.
-    </p>
-  </header>
-
-  <nav>
-    <h2>Portfolio Navigation</h2>
-    <a href="#code-review">Code Review</a>    <a href="#">Software Engineering and Design Enhancement</a>
-    <a href="#">Algorithms and Data Structures Enhancement</a>
-    <a href="#">Database Enhancement</a>
-    <a href="#">Professional Self-Assessment</a>
-  </nav>
-  <section id="code-review">
-  <h2>Code Review</h2>
-  <p>
-    Code Review is an analysis of the original CS 360 inventory management program before capstone enhancements. 
-    The code review looks at the functionality of the system currently in place, and how there are ways to improve the design of the code, 
-    the algorithms, the database, security, and testing.
-  </p>
-
-  <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
-    <iframe
-      src="https://www.youtube.com/embed/US5UWKbq-yA"
-      title="CS 499 Code Review"
-      style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
+    <p>CS 499 capstone portfolio demonstrating growth in software design and engineering, algorithms and data structures, databases, testing, and secure software development through the evolution of an Android inventory management application.</p>
   </div>
+</header>
+<nav aria-label="Portfolio navigation">
+  <div class="wrap">
+    <a href="#self-assessment">Self-Assessment</a>
+    <a href="#code-review">Code Review</a>
+    <a href="#original">Original Artifact</a>
+    <a href="#software">Software Engineering</a>
+    <a href="#algorithms">Algorithms</a>
+    <a href="#databases">Databases</a>
+    <a href="#outcomes">Course Outcomes</a>
+  </div>
+</nav>
+<main id="main" class="wrap">
 
-  <p>
-    <a href="https://youtu.be/US5UWKbq-yA?si=58KDtN4WQ0PVcWyf"
-       target="_blank"
-       rel="noopener noreferrer">
-      Watch the Code Review on YouTube
-    </a>
-  </p>
+<section id="self-assessment" class="assessment">
+  <h2>Professional Self-Assessment</h2>
+  <div class="note">This self-assessment serves as the introduction to the portfolio and presents my professional direction, strengths, values, and the way the artifacts below fit together.</div>
+  <p>Having finished the Computer Science program and created an ePortfolio of the work done, I have become aware of my core value going well beyond programming skills. I am good at comprehending the way the system works, identifying failure points, introducing controlled changes, and presenting them to the stakeholders. Throughout the course, I have worked on software development, databases, testing, security, algorithms, graphics, full-stack work, and artificial intelligence. Capstone helped me to outline the direction of my future career – starting either as a member of IT, systems or data center teams, moving on to system and data administration, cloud services, automation, and DevOps.</p>
+<p>In addition, this coursework has allowed me to determine the professional values I will be carrying into my next endeavors. They include reliability, thoroughness in documentation, security, and evidence-based trouble shooting. I prefer to know the reason behind the system behavior rather than introduce a quick fix. All the changes I have made during the Capstone project required investigation of the system, its weakness identification, introduction of the change and making sure that the previous functionality remains intact. This approach fits the roles of technical support, infrastructure, system administration, and operations professionals.</p>
+<p>Another crucial aspect of my development has been my experience in collaborating with others. In one of the projects, I worked as a team leader and helped to design an application that could help elderly people with mobility issues. While working in a team in the field of computer science, you need not only to share your ideas about the design of the system, but to organize the work to keep the focus on the end-users.</p>
+<p>I also learned the necessity of proper communication with stakeholders when the requirements are unclear or ambiguous. In a professional setting, my initial score in the quality assurance review decreased because I did not check the specific disclosure. I reviewed the policy and found out that this requirement was not documented. Instead of accepting the score, taking it personally or trying to prove my point to everyone else, I brought up this issue to the leadership and got help with my appeal. It was accepted. Thus, I showed the skills that will be valuable for my next professional life – the requirements should be traceable, decisions should be made based on the policies, and concerns should be addressed properly to the right person in charge.</p>
+<p>My work with data structures and algorithms gave me an opportunity to learn how to weigh the options instead of considering all the possible solutions equal just because they work. During the capstone project, I added searching, filtering and sorting with several different deterministic sorting modes to the inventory processing. I analyzed the cost of each action, purpose of each data structure and the need for deterministic tie-breaking. This experience was gained earlier from the coursework that involved algorithmic problem solving both in programming and artificial intelligence courses.</p>
+<p>Software engineering and database development became the other main strength area for me. Throughout the course, I was working on object-oriented programming, Android development, full-stack applications, database persistence and automated testing. In CS 499, I refactored an Android inventory application, distributing responsibilities between repository, validation, policy, adapter, and service components instead of having them all in the single activity. Database went from simple current state to a versioned one with ownership relations, constraints, transactional migrations, audit history, indexed queries, and eventually keyset pagination on the database side. It showed me that the quality of the software depends on the maintainability of the boundaries and the integrity of the data under the user interface.</p>
+<p>Testing has become an essential tool for software evaluation. In CS 320, I learned about JUnit and how automated tests help to implement the requirements in the form of the check. I continued to use this approach in the capstone project by using the unit and Android instrumentation tests to check validation, password handling, migrations, owner isolation, history transactions, ordering, rollback and pagination. I used the emulator workflow to check the behaviors that could not be checked by unit tests.</p>
+<p>The coursework in security and secure development changed my attitude towards the system design. In CS 305, we studied software security in the Artemis Financial project. The focus there was on the vulnerability detection and application of secure development practices. I carried this approach to the Capstone project, replacing plaintext passwords with the salted PBKDF2 hashes, using owner-scoped database operations, implementing the foreign keys and CHECK constraints, using parameterized database queries and testing wrong owner behavior and rollback.</p>
+<p>Additional coursework has broadened my expertise in many areas. In CS 330, I have gained experience with OpenGL and relationship between the software, rendering and hardware. In CS 465, I was working on client-server application structure and multi-layer architecture. Coursework in artificial intelligence in CS 370 taught me machine learning and decision making. Besides the artifacts in the current portfolio, these projects have taught me how to move fluently among application software, data, operating environment and hardware. Such breadth helps me achieve the goal of finding an infrastructure-oriented position that requires sufficient software knowledge to automate and troubleshoot processes.</p>
+<p>The artifacts presented here show the progress achieved in a coherent manner. The code review starts from the original CS 360 inventory application and highlights the problems with the structure, algorithms, database design, security and testing. The enhancement for software design and engineering makes it more modular, validates it better, implements the owner-scoped behavior and better credential handling and user interface organization. The algorithms and data structures enhancement introduces a searching, filtering and sorting pipeline with deterministic behavior and documented complexity. The database enhancement adds timestamps, transaction-supported audit history, migration, indexes, owner isolation, and history screen visible to the user. Further instructor&#x27;s feedback resulted in one additional scalability improvement – database side keyset pagination to make the audit history practical.</p>
+<p>All together, the artifacts in the portfolio demonstrate all five outcomes of the Computer Science program. Collaboration and stakeholder communication are demonstrated by my team-lead experience, professional advocacy, code review, documentation and feedback-driven improvements. Professional communication skills are shown in the code review, narratives, testing evidence and ePortfolio presentation. Algorithmic design is demonstrated by search, filtering, sorting, complexity analysis, deterministic ordering and pagination. The software engineering and database expertise is shown in modular architecture, migrations, transactions, automated testing and user-facing integration. The security outcome is represented by credential protection, authorization boundaries, data integrity and adversarial testing.</p>
+<p>The immediate professional goal for me is to switch from the intake-oriented work to the entry-level technical position such as IT Support Specialist or Data Center Technician. Next steps will take me to system and data administration, cloud infrastructure, service maintenance, automation, and DevOps roles. The Computer Science program has not only provided me with some programming assignments, but also with the way of dealing with technical challenges. It includes comprehending the system, documenting the requirements, choosing the solution, protecting the data, testing and communicating the changes. This framework becomes the foundation for my future career.</p>
+  <div class="actions"><a class="btn primary" href="documents/Professional_Self_Assessment.docx">Download Professional Self-Assessment (Word)</a></div>
 </section>
-  <section>
-    <h2>Selected Artifact</h2>
-    <p>
-      My main artifact is the CS 360 Android inventory management application.
-      The improved version will show the advancements in application design, 
-      search and sorting algorithm for inventory, database design using SQLite, data validation, 
-      testing, and secure software development.
-    </p>
-  </section>
+
+<section id="code-review">
+  <h2>Code Review</h2>
+  <p class="lede">The code review analyzes the original CS 360 inventory management application before the capstone enhancements. It reviews existing functionality and identifies opportunities to improve code structure, algorithms, database design, security, testing, and maintainability.</p>
+  <div class="video"><iframe src="https://www.youtube.com/embed/US5UWKbq-yA" title="CS 499 Code Review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="actions"><a class="btn primary" href="https://youtu.be/US5UWKbq-yA?si=58KDtN4WQ0PVcWyf" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
+</section>
+
+<section id="original">
+  <h2>Original Artifact</h2>
+  <p class="lede">The selected artifact is the Android inventory management application originally created for CS 360: Mobile Architecture and Programming. The original application provided account and inventory functions but offered clear opportunities for improvement in architecture, algorithms, persistence, testing, and security.</p>
+  <div class="hero-grid">
+    <div class="card"><h3>Starting Point</h3><p>Java Android application using XML layouts and SQLiteOpenHelper. The original implementation concentrated responsibilities in activities, stored plaintext passwords, lacked owner-scoped inventory, and used destructive database upgrades.</p></div>
+    <div class="card"><h3>Why It Works as a Capstone Artifact</h3><p>Using one artifact across all three enhancement categories makes the progression visible: first improving the architecture, then algorithmic behavior, and finally database capability and scalability.</p></div>
+  </div>
+  <div class="actions"><a class="btn primary" href="artifacts/InventoryAppProject_Original_CS360.zip">Download Original Artifact</a><a class="btn secondary" href="https://github.com/HaganSamuel/InventoryAppProject" target="_blank" rel="noopener noreferrer">View Project Repository</a></div>
+</section>
+
+<section id="software">
+  <h2>Enhancement One: Software Design and Engineering</h2>
+  <p class="lede">The first enhancement refactored the application into clearer components and strengthened the persistence and security boundaries without changing the purpose of the application.</p>
+  <div class="grid">
+    <div class="card"><h3>Implemented</h3><p>Repository, validation, policy, adapter, and SMS-service boundaries; RecyclerView; owner-scoped inventory; salted PBKDF2 credential storage; nonnegative constraints; transactional migration; automated tests.</p><div class="tagrow"><span class="tag">Modular Design</span><span class="tag">RecyclerView</span><span class="tag">PBKDF2</span><span class="tag">Migration</span></div></div>
+    <div class="card"><h3>Feedback Incorporated</h3><p>The instructor requested final migration and SMS emulator verification. Both were completed: migration preservation was confirmed, and denied/granted SMS permission workflows were tested without breaking inventory access.</p><p class="verified">Final verification completed.</p></div>
+  </div>
+  <div class="actions"><a class="btn primary" href="documents/Enhancement_One_Software_Engineering_Narrative.docx">Read Narrative (Word)</a><a class="btn secondary" href="artifacts/Enhancement_One_Software_Engineering.zip">Download Enhanced Code</a><a class="btn secondary" href="https://github.com/HaganSamuel/InventoryAppProject/tree/milestone-two" target="_blank" rel="noopener noreferrer">View Milestone Two Branch</a><a class="btn secondary" href="evidence/Enhancement_One_Submission_Package.zip">Verification Package</a></div>
+</section>
+
+<section id="algorithms">
+  <h2>Enhancement Two: Algorithms and Data Structures</h2>
+  <p class="lede">The second enhancement expanded the earlier urgency-only behavior into a user-selectable search, filter, and sorting pipeline while preserving urgency ordering for SMS alerts.</p>
+  <div class="grid">
+    <div class="card"><h3>Implemented</h3><p>Four <code>InventorySortMode</code> strategies: name, quantity, threshold, and urgency; case-insensitive search; low-stock filtering; EnumMap comparator strategy; deterministic name/ID tie-breaking; source-list immutability.</p><div class="tagrow"><span class="tag">ArrayList</span><span class="tag">EnumMap</span><span class="tag">Comparator</span><span class="tag">O(k log k)</span></div></div>
+    <div class="card"><h3>Evaluation and Verification</h3><p>The narrative evaluates List/ArrayList against alternatives such as HashMap and priority queue. The completed unit suite passed 15 tests, and emulator checks confirmed migration and SMS workflows remained intact.</p><p class="verified">Instructor feedback on milestone distinction and final verification incorporated.</p></div>
+  </div>
+  <div class="actions"><a class="btn primary" href="documents/Enhancement_Two_Algorithms_Narrative.docx">Read Narrative (Word)</a><a class="btn secondary" href="artifacts/Enhancement_Two_Algorithms.zip">Download Enhanced Code</a><a class="btn secondary" href="https://github.com/HaganSamuel/InventoryAppProject/tree/milestone-three" target="_blank" rel="noopener noreferrer">View Milestone Three Branch</a><a class="btn secondary" href="evidence/Enhancement_Two_Submission_Package.zip">Verification Package</a></div>
+</section>
+
+<section id="databases">
+  <h2>Enhancement Three: Databases</h2>
+  <p class="lede">The database enhancement added durable audit history, non-destructive schema evolution, stronger integrity rules, and a visible history feature. Final instructor feedback was then addressed with database-side keyset pagination.</p>
+  <div class="grid">
+    <div class="card"><h3>Database Evolution</h3><p>Versioned schema with created/updated timestamps, <code>inventory_history</code> ADD/UPDATE/DELETE snapshots, foreign keys, CHECK constraints, owner isolation, transactional history writes, indexes, and direct migration support.</p><div class="tagrow"><span class="tag">SQLite</span><span class="tag">Transactions</span><span class="tag">Audit History</span><span class="tag">Indexes</span></div></div>
+    <div class="card"><h3>Final Scalability Update</h3><p>History now uses 25-record database-side keyset pages ordered by <code>action_time DESC, history_id DESC</code>, supported by a composite owner/time/ID index and a Load More interface.</p><p class="verified">15 JVM tests + 23 Android instrumentation tests passed with no failures, errors, or skips.</p></div>
+  </div>
+  <div class="actions"><a class="btn primary" href="documents/Enhancement_Three_Database_Narrative.docx">Read Narrative (Word)</a><a class="btn secondary" href="artifacts/Enhancement_Three_Database_Final.zip">Download Final Enhanced Code</a><a class="btn secondary" href="https://github.com/HaganSamuel/InventoryAppProject/tree/final-portfolio-database" target="_blank" rel="noopener noreferrer">View Final Database Branch</a><a class="btn secondary" href="evidence/Enhancement_Three_Final_Database_Package.zip">Verification Package</a></div>
+</section>
+
+<section id="outcomes">
+  <h2>Course Outcome Evidence</h2>
+  <p class="lede">The artifact enhancements and professional self-assessment work together to demonstrate the five Computer Science program outcomes.</p>
+  <div class="outcomes">
+    <div class="outcome"><strong>Outcome 1</strong>Collaboration and stakeholder communication are supported by team-lead experience, professional advocacy, code review, documented decisions, and feedback-driven revisions.</div>
+    <div class="outcome"><strong>Outcome 2</strong>Professional oral, written, and visual communication is demonstrated through the code review, narratives, testing evidence, and this ePortfolio.</div>
+    <div class="outcome"><strong>Outcome 3</strong>Search, filtering, deterministic sorting, complexity analysis, data-structure trade-offs, and keyset pagination demonstrate algorithmic design and evaluation.</div>
+    <div class="outcome"><strong>Outcome 4</strong>Modular architecture, Android development, database migrations, transactions, indexes, repository methods, and automated testing demonstrate computing practice.</div>
+    <div class="outcome"><strong>Outcome 5</strong>PBKDF2 credentials, owner-scoped operations, parameterized selections, constraints, rollback behavior, and adversarial ownership tests demonstrate a security mindset.</div>
+  </div>
+</section>
+
+</main>
+<footer><div class="wrap">Hagan Samuel · CS 499 Computer Science Capstone · Southern New Hampshire University · 2026</div></footer>
 </body>
 </html>
